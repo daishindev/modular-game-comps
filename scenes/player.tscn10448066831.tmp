@@ -21,3 +21,7 @@ shape = SubResource("RectangleShape2D_g2els")
 
 [node name="MovementComponent" parent="." node_paths=PackedStringArray("body") instance=ExtResource("4_qlg0r")]
 body = NodePath("..")
+
+[node name="SprintComponent" type="Node" parent="."]
+
+[node name="DashComponent" type="Node" parent="."]
