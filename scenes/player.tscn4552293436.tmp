@@ -17,13 +17,9 @@ texture = ExtResource("2_qhqgy")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_g2els")
 
-[node name="HealthComponent" parent="." node_paths=PackedStringArray("body") instance=ExtResource("3_dqkch")]
-body = NodePath("..")
+[node name="HealthComponent" parent="." instance=ExtResource("3_dqkch")]
 
 [node name="MovementComponent" parent="." node_paths=PackedStringArray("body") instance=ExtResource("4_qlg0r")]
-sprint_speed = null
 body = NodePath("..")
-speed = null
-dash_distance = null
 
 [node name="ShootingComponent" type="Node" parent="."]
