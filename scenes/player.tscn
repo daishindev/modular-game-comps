@@ -1,29 +1,37 @@
-[gd_scene load_steps=6 format=3 uid="uid://wps0hpecyxnr"]
+[gd_scene load_steps=8 format=3 uid="uid://wps0hpecyxnr"]
 
 [ext_resource type="Script" uid="uid://j3u0nilavcau" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://phklvrhvyyk1" path="res://icon.svg" id="2_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://b13u85sqbrncx" path="res://scenes/health_component.tscn" id="3_dqkch"]
+[ext_resource type="PackedScene" uid="uid://1m0xhf8qatfq" path="res://scenes/projectile_component.tscn" id="3_qlg0r"]
 [ext_resource type="PackedScene" uid="uid://cqf38ehwwclbb" path="res://scenes/movement_component.tscn" id="4_qlg0r"]
+[ext_resource type="PackedScene" uid="uid://ckvsr8tqomsf5" path="res://scenes/projectile_launcher.tscn" id="6_tuyoq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
-size = Vector2(120, 114)
+size = Vector2(16, 16)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_g2els")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1328125, 0.1328125)
 texture = ExtResource("2_qhqgy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_g2els")
 
+[node name="ProjectileComponent" parent="." instance=ExtResource("3_qlg0r")]
+visible = false
+position = Vector2(0, 0)
+
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("body") instance=ExtResource("3_dqkch")]
 body = NodePath("..")
 
 [node name="MovementComponent" parent="." node_paths=PackedStringArray("body") instance=ExtResource("4_qlg0r")]
-sprint_speed = null
 body = NodePath("..")
-speed = null
-dash_distance = null
 
-[node name="ShootingComponent" type="Node" parent="."]
+[node name="ProjectileLauncher" parent="." node_paths=PackedStringArray("body") instance=ExtResource("6_tuyoq")]
+projectile_scene = ExtResource("3_qlg0r")
+body = NodePath("..")
+
+[connection signal="dashed" from="MovementComponent" to="HealthComponent" method="_on_movement_component_dashed"]

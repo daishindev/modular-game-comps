@@ -4,5 +4,7 @@
 
 [node name="HealthComponent" type="Node"]
 script = ExtResource("1_a1tyf")
+max_health = null
+immortality = null
 
 [node name="InvinciTimer" type="Timer" parent="."]

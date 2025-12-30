@@ -4,6 +4,8 @@ extends Node
 
 @export var body : Node2D
 @export var max_health: int = 100
+@export var immortality: bool
+
 signal health_changed(old_value, new_value)
 
 var health : int:
@@ -23,3 +25,4 @@ func _ready():
 	print(health)
 	health -= 100
 	print(health)
+	

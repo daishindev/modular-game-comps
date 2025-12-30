@@ -4,3 +4,7 @@
 
 [node name="MovementComponent" type="Node"]
 script = ExtResource("1_aie7v")
+
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 0.226
+one_shot = true
